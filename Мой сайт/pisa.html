@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поставь голос мечты за 30 дней</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0a0a;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(26,26,26,0.95) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23111"/></svg>');
+            padding: 80px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #333;
+        }
+        
+       
+        
+        .hero h1 {
+            font-size: 3.8em;
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6B35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255,215,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.4em;
+            margin-bottom: 50px;
+            color: #cccccc;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .author-intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .author-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #FFD700;
+            object-fit: cover;
+            box-shadow: 0 0 30px rgba(255,215,0,0.4);
+        }
+        
+        .author-info h3 {
+            font-size: 1.5em;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        .author-info p {
+            color: #cccccc;
+            font-size: 1.1em;
+        }
+        
+        .celebrities {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .celebrity {
+            text-align: center;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .celebrity:hover {
+            opacity: 1;
+        }
+        
+        .celebrity img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #333;
+            margin-bottom: 10px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        
+        .celebrity:hover img {
+            filter: grayscale(0%);
+        }
+        
+        .celebrity p {
+            font-size: 0.9em;
+            color: #888;
+        }
+        
+        .section {
+            background: #111111;
+            padding: 80px 0;
+            border-bottom: 1px solid #222;
+        }
+        
+        .section:nth-child(even) {
+            background: #0a0a0a;
+        }
+        
+        .section h2 {
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .section h3 {
+            font-size: 1.9em;
+            margin-bottom: 25px;
+            color: #FFD700;
+            font-weight: 600;
+        }
+        
+        .problem-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
+            border: 1px solid #ff4444;
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(255,68,68,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .problem-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff4444, #ff6b6b);
+        }
+        
+        .solution-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #1a2d1a 100%);
+            border: 1px solid #00ff88;
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,255,136,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff88, #4ecdc4);
+        }
+        
+        .lead-magnet {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d1a 100%);
+            border: 2px solid #FFD700;
+            color: white;
+            padding: 60px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 25px 80px rgba(255,215,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lead-magnet::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FF6B35);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6B35 100%);
+            color: #000;
+            padding: 20px 50px;
+            font-size: 1.4em;
+            font-weight: 700;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 25px 0;
+            box-shadow: 0 15px 40px rgba(255,215,0,0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(255,215,0,0.6);
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .result-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #00ff88);
+        }
+        
+        .result-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(255,215,0,0.2);
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 1px solid #444;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-left: 5px solid #FFD700;
+            font-style: italic;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .testimonial strong {
+            color: #FFD700;
+            font-style: normal;
+        }
+        
+        .urgency {
+            background: linear-gradient(135deg, #2d1a1a 0%, #3d2a1a 100%);
+            border: 1px solid #ff6b35;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            font-weight: 600;
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.2);
+        }
+        
+        .features-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+        
+        .features-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1em;
+        }
+        
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .price-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a1a 100%);
+            border: 2px solid #FFD700;
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 25px 80px rgba(255,215,0,0.3);
+        }
+        
+        .price-box .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.3em;
+        }
+        
+        .price-box .new-price {
+            font-size: 3em;
+            font-weight: 800;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5);
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #cccccc;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .section h2 {
+                font-size: 2.2em;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .author-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .celebrities {
+                gap: 20px;
+            }
+            
+            .celebrity img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Поставь мощный голос за 30 дней без дорогих преподавателей</h1>
+            <p class="subtitle">Увеличь доходы, привлекай внимание и удивляй всех красотой своего голоса</p>
+            
+            <div class="author-intro">
+                <img src="author.jpg.jpg" alt="Автор курса" class="author-photo">
+                <div class="author-info">
+                    <h3>Тренер по голосу с 4-летним опытом</h3>
+                    <p>Помог 9999+ парням поставить мощный голос<br>и увеличить доходы в 0-0 раз</p>
+                </div>
+            </div>
+            
+            <div class="celebrities">
+                <div class="celebrity">
+                    <img src="statham.jpg.jpg" alt="Джейсон Стетхем">
+                    <p>Стетхем<br><small>Брутальный голос</small></p>
+                </div>
+                <div class="celebrity">
+                    <img src="dicaprio.jpg.jpg" alt="Леонардо ДиКаприо">
+                    <p>ДиКаприо<br><small>Харизматичный</small></p>
+                </div>
+                <div class="celebrity">
+                    <img src="djon.jpg.jpg" alt="Дуэйн Джонсон">
+                    <p>Скала<br><small>Послал нахуй</small></p>
+                </div>
+            </div>
+            
+            <a href="https://t.me/BriTOnly" target="_blank" class="cta-button">Получить бесплатный гайд</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2>Результаты говорят сами за себя</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">Учеников прошли курс</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Увеличили доходы</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Дней до результата</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$800</div>
+                    <div class="stat-label">Средний доход в месяц</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Твой голос — твоя проблема?</h2>
+            <div class="problem-box">
+                <h3>🔥 Звучишь слабо и неуверенно?</h3>
+                <p>Ты говоришь, а тебя не слушают. На собеседованиях проигрываешь тем, кто звучит увереннее. Девушки не обращают внимания. В компании друзей твоё мнение игнорируют.</p>
+                
+                <p><strong>Каждый день без сильного голоса — это упущенные деньги:</strong></p>
+                <ul class="features-list">
+                    <li><strong>Потерянная работа мечты</strong> — HR выбирают тех, кто звучит увереннее</li>
+                    <li><strong>Пропущенные знакомства</strong> — девушки не замечают "тихонь"</li>
+                    <li><strong>Неуважение окружающих</strong> — слабый голос = слабая личность</li>
+                    <li><strong>Низкая самооценка</strong> — боишься выступать публично</li>
+                    <li><strong>Упущенный заработок</strong> — не можешь работать диктором, стримером</li>
+                </ul>
+                
+                <div class="urgency">
+                    ⚠️ Пока ты откладываешь — другие парни уже зарабатывают голосом $500-2000 в месяц
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Система работает. Проверено на 2000+ парней</h2>
+            <div class="solution-box">
+                <h3>⚡ Мой метод работает за 3 простых этапа:</h3>
+                
+                <p><strong>ЭТАП 1: Дыхание и опора (дни 1-10)</strong><br>
+                Ставим правильное диафрагмальное дыхание. Твой голос получает мощную основу. Никаких зажимов в горле. Звучишь сильно без усилий.</p>
+                
+                <p><strong>ЭТАП 2: Громкость и тембр (дни 11-20)</strong><br>
+                Включаем резонаторы — грудь и лицевую маску. Голос становится объёмным, мужественным, глубоким. Тот самый "бархатный" тембр.</p>
+                
+                <p><strong>ЭТАП 3: Техника речи (дни 21-30)</strong><br>
+                Шлифуем артикуляцию, интонации, паузы. Говоришь чётко, красиво, убедительно. Каждое слово на вес золота.</p>
+                
+                <div class="urgency">
+                    🚀 Результат: Мощный, харизматичный голос, который привлекает внимание и приносит деньги
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section class="section" id="lead-magnet">
+        <div class="container">
+            <div class="lead-magnet">
+                <h2>🎁 БЕСПЛАТНО: "12 секретных упражнений для мощного голоса"</h2>
+                <p>Получи систему постановки голоса, которая работает у 94% моих учеников</p>
+                
+                <p><strong>Что внутри гайда:</strong></p>
+                <ul class="features-list">
+                    <li><strong>Упражнение "Свеча"</strong> — для правильного дыхания (работает за 3 дня)</li>
+                    <li><strong>Техника "Гул в маске"</strong> — для резонанса и объёма голоса</li>
+                    <li><strong>Метод "Говорю вдаль"</strong> — для естественной громкости</li>
+                    <li><strong>Чек-лист ежедневных тренировок</strong> — план на 30 дней</li>
+                    <li><strong>5 частых ошибок новичков</strong> — избеги их с самого начала</li>
+                    <li><strong>БОНУС:</strong> 7 способов заработать голосом $500-2000/месяц</li>
+                </ul>
+                
+                <div class="urgency">
+                    💰 Обычно за такую консультацию тренеры по голосу берут $300-500<br>
+                    <strong>Сегодня получаешь БЕСПЛАТНО</strong>
+                </div>
+                
+                <a href="https://t.me/britonlyprod" target="_blank" class="cta-button">💎 Скачать гайд за 0₽</a>
+                
+                <p style="margin-top: 30px; font-size: 1em; color: #cccccc;">
+                    📖 PDF для чтения • 🎥 Видео-демонстрация • 🎧 Аудио-тренировки • 📊 Чек-листы
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section">
+        <div class="container">
+            <h2>Результаты моих учеников</h2>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>💰 Максим, 18 лет, студент</h3>
+                    <p><strong>Доход вырос с $200 до $800 в месяц за 2 месяца</strong></p>
+                    <p>"Начал работать диктором для TikTok и YouTube. Голос стал настолько крутым, что заказчики сами находят меня. Девушки в универе теперь сами подходят знакомиться!"</p>
+                </div>
+                
+                <div class="result-card">
+                    <h3>🎯 Артём, 19 лет, фрилансер</h3>
+                    <p><strong>Получил работу в IT за $1200/месяц</strong></p>
+                    <p>"Прошёл 5 собеседований подряд. На последнем HR прямо сказала: 'У вас очень приятный, уверенный голос'. Теперь веду переговоры с клиентами."</p>
+                </div>
+                
+                <div class="result-card">
+                    <h3>🔥 Данил, 17 лет, школьник</h3>
+                    <p><strong>Стал самым популярным в классе за 3 недели</strong></p>
+                    <p>"Голос изменился кардинально. Выбрали старостой, девчонки постоянно просят что-то прочитать вслух. Самооценка взлетела до небес!"</p>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <p>"Братан, это просто огонь! За месяц мой голос стал как у актёра из фильмов. Начал стримить на Твиче, подписчики растут каждый день. Уже зарабатываю больше родителей 😎"</p>
+                <strong>— Игорь, 20 лет, стример (+$1500/месяц)</strong>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="https://t.me/BriTOnly" target="_blank" class="cta-button">🚀 Хочу такой же результат</a>
